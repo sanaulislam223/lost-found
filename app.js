@@ -191,22 +191,30 @@ if (loginBtnElement) {
 firebase.auth().onAuthStateChanged((user) => {
     currentLoggedInUser = user;
     const loginBtn = document.getElementById("admin-login-btn");
+    const logoutBtn = document.getElementById("logout-btn");
     const adminStatus = document.getElementById("admin-status");
-    const emailDisplay = document.getElementById("admin-email-display");
 
-    if (loginBtn && adminStatus && emailDisplay) {
-        if (user && user.email === MY_ADMIN_EMAIL) {
-            loginBtn.style.display = "none";
-            adminStatus.style.display = "flex";
-            emailDisplay.innerText = `Admin: ${user.email}`;
-        } else {
-            loginBtn.style.display = "inline-block";
-            adminStatus.style.display = "none";
-            emailDisplay.innerText = "";
-        }
+    // ⚠️ ईमेल डिस्प्ले को पूरी तरह छिपाए रखने के लिए
+    const emailDisplay = document.getElementById("admin-email-display");
+    if (emailDisplay) {
+        emailDisplay.style.display = "none";
     }
+
+    // अगर यूजर लॉगिन है और वह एडमिन ईमेल से मैच करता है
+    if (user && user.email === MY_ADMIN_EMAIL) {
+        if (loginBtn) loginBtn.style.display = "none";         // Admin बटन छिपाएं
+        if (adminStatus) adminStatus.style.display = "flex";   // स्टेटस कंटेनर दिखाएं
+        if (logoutBtn) logoutBtn.style.display = "inline-block"; // Logout बटन दिखाएं
+    } else {
+        // अगर यूजर लॉगआउट है या एडमिन नहीं है
+        if (loginBtn) loginBtn.style.display = "inline-block"; // Admin बटन दिखाएं
+        if (adminStatus) adminStatus.style.display = "none";   // स्टेटस कंटेनर छिपाएं
+        if (logoutBtn) logoutBtn.style.display = "none";       // Logout बटन छिपाएं
+    }
+
     updateDeleteButtonsVisibility();
 });
+
 
 function updateDeleteButtonsVisibility() {
     const user = firebase.auth().currentUser;
