@@ -416,3 +416,45 @@ window.addEventListener('click', function(event) {
         imgModal.style.display = "none";
     }
 });
+
+
+
+
+
+
+
+
+// Google Login Mechanism (v8 Syntax)
+const loginPage = document.getElementById("login-page");
+const mainAppContent = document.getElementById("main-app-content");
+const googleLoginBtn = document.getElementById("google-login-btn");
+
+// Auth State Monitor (Yeh check karega ki user logged in hai ya nahi)
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        // User login hai -> Login screen chhupao, website dikhao
+        if (loginPage) loginPage.style.display = "none";
+        if (mainAppContent) mainAppContent.style.display = "block";
+        
+        console.log("Logged in user tracking:", user.email);
+    } else {
+        // User login nahi hai -> Login screen dikhao, website chhupao
+        if (loginPage) loginPage.style.display = "flex";
+        if (mainAppContent) mainAppContent.style.display = "none";
+    }
+});
+
+// Google Button Click Event
+if (googleLoginBtn) {
+    googleLoginBtn.addEventListener("click", () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            console.log("Authentication successful for:", result.user.email);
+        })
+        .catch((error) => {
+            console.error("Authentication failed:", error.message);
+            alert("Login Failed: " + error.message);
+        });
+    });
+}
