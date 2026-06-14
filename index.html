@@ -128,8 +128,6 @@
 
     </div>
 </nav>
-
-
 	
 <!-- पुराना marquee और style टैग हटाकर इसे डालें -->
 <div class="responsive-ticker-bar">
@@ -140,13 +138,10 @@
     </div>
 </div>
 
-
-
-
 <style>
 .responsive-ticker-bar {
     position: fixed;         /* ⚡ Isse news patti ek jagah fix ho jayegi */
-    top: 90px;              /* 💻 Laptop me navbar ke thik niche set karne ke liye */
+    top: 35px;              /* 💻 Laptop me navbar ke thik niche set karne ke liye */
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -232,8 +227,27 @@ body {
 
                 <input type="text" id="reporter-contact" placeholder="Your Phone or Email" data-en-placeholder="Your Phone or Email" data-hi-placeholder="आपका फोन या ईमेल" required>
                 <button type="submit" id="submit-btn" data-en="Submit Report" data-hi="रिपोर्ट सबमिट करें">Submit Report</button>
-            </form>
+
+    </form>
+
+    <!-- चैट बॉक्स अब फॉर्म कंटेनर के अंदर आ गया है -->
+    <div class="independent-chat-box" style="margin-top: 25px;">
+        <div class="chat-box-header">
+            <h3>💬 Message Box / चैट बॉक्स</h3>
         </div>
+        
+<!-- अब इसके अंदर का पुराना टेक्स्ट पूरी तरह हटा दिया गया है -->
+<div class="chat-box-messages" id="embeddedChatMessages"></div>
+
+
+        <div class="chat-box-input-wrapper">
+            <input type="text" id="embeddedChatInput" placeholder="Type here....." onkeypress="checkChatKey(event)">
+            <button onclick="sendEmbeddedMessage()">Send</button>
+        </div>
+    </div>
+
+</div>
+
 
         <!-- दायाँ हिस्सा: लाइव फीड -->
         <div class="content-feed">
@@ -268,6 +282,7 @@ body {
 
 <script src="firebase-config.js"></script>
 <script src="app.js"></script>
+<script src="chat.js"></script>
 
 
 <!-- Image ko bada dekhne ka target HTML box (Body ke end me jodein) -->
