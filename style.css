@@ -31,7 +31,7 @@ body {
     align-items: center;
     padding: 6px 20px;
     background-color: var(--card-bg);
-    border-bottom: 2px solid #00ffcc;
+    border-bottom: 2px solid #00ffcc);
 
 	box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
     
@@ -109,7 +109,7 @@ body {
 
 /* Layout */
 .main-container {
-    display: flex; padding: 30px; gap: 30px; max-width: 1300px; margin: 0 auto;
+    display: flex; padding: px; gap: 30px; max-width: 1300px; margin: 0 auto;
 }
 .sidebar-form {
     flex: 1; 
@@ -527,4 +527,18 @@ body.dark-mode textarea::placeholder {
     box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
 }
 
+
+#logout-btn {
+    background-color: transparent !important; /* ताकि अलग से चमकता हुआ दिखे */
+    margin-left: 10px;
+    z-index: 9999; /* सबसे ऊपर दिखने के लिए */
+    color:#FFCC00;
+    border-radius: 20px;
+    padding: 8px 10px;
+    border: 1.5px solid #00ffcc;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow : 0 0 20px rgba(0, 255, 204, 0.3);
+    transition: all 0.2s ease;
+}
 
