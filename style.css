@@ -751,3 +751,188 @@ body.dark-mode textarea::placeholder {
 body.dark-mode .ticker-text {
     color: #ffffff !important;
 }
+
+
+
+
+
+
+/* मुख्य चैट बॉक्स जो फॉर्म के नीचे रहेगा */
+.embedded-chat-box {
+    width: 100%;
+    margin-top: 20px; /* फॉर्म से दूरी */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* चैट का ऊपरी हिस्सा */
+.chat-box-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+}
+.chat-box-header h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* मैसेज स्क्रीन एरिया (स्क्रॉल बार के साथ) */
+.chat-box-messages {
+    height: 180px; /* फिक्स हाइट ताकि फॉर्म ज्यादा लंबा न दिखे */
+    padding: 12px;
+    overflow-y: auto;
+    background-color: #FFF8DC;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* मैसेजेस का अलग-अलग स्टाइल */
+.chat-msg {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    max-width: 85%;
+    line-height: 1.4;
+}
+.chat-msg.system {
+    background-color: #e2e3e5;
+    color: #383d41;
+    align-self: flex-start;
+}
+.chat-msg.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end; /* यूजर का मैसेज राइट साइड दिखेगा */
+}
+
+/* इनपुट और सेंड बटन */
+.chat-box-input-wrapper {
+    display: flex;
+    padding: 8px;
+    background-color: #ffffff;
+    border-top: 1px solid #eee;
+}
+.chat-box-input-wrapper input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    outline: none;
+}
+.chat-box-input-wrapper button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    margin-left: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* 🌙 डार्क मोड अनुकूलता (Dark Mode Compatibility) */
+body.dark-mode .embedded-chat-box { background-color: #1e1e1e; border-color: #333; }
+body.dark-mode .chat-box-messages { background-color: #121212; }
+body.dark-mode .chat-msg.system { background-color: #2d2d2d; color: #fff; }
+body.dark-mode .chat-box-input-wrapper { background-color: #1e1e1e; border-top-color: #333; }
+body.dark-mode .chat-box-input-wrapper input { background-color: #2d2d2d; border-color: #444; color: white; }
+
+
+
+/* चैट के मैसेज एरिया को थोड़ा व्यवस्थित करने के लिए */
+.chat-box-messages {
+    max-height: 180px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* यूज़र का भेजा हुआ मैसेज हमेशा राइट साइड दिखेगा */
+.chat-msg.user {
+    background-color: #007bff !important;
+    color: white !important;
+    align-self: flex-end !important;
+    margin-left: auto !important;
+    border-radius: 8px 8px 0px 8px;
+    padding: 6px 12px;
+    max-width: 85%;
+}
+
+/* मैसेज के ऊपर Gmail ID का स्टाइल */
+.chat-user-id {
+    display: block;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+    margin-bottom: 2px;
+    word-break: break-all;
+}
+
+/* 🌙 डार्क मोड सपोर्ट (जब आप चाँद वाले बटन पर क्लिक करेंगे) */
+body.dark-mode .independent-chat-box {
+    background-color: #1e1e1e !important;
+    border-color: #333 !important;
+}
+
+body.dark-mode .chat-box-messages {
+    background-color: #121212 !important;
+}
+
+body.dark-mode .chat-msg.system {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .chat-box-input-wrapper {
+    background-color: #1e1e1e !important;
+    border-top-color: #333 !important;
+}
+
+body.dark-mode .chat-box-input-wrapper input {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+    color: white !important;
+}
+
+
+
+/* न्यूज़ टिकर पट्टी को फॉर्म के ऊपर हावी होने से रोकने के लिए */
+.responsive-ticker-bar {
+    position: relative !important;
+    transform: none !important;
+    margin-bottom: 20px !important;
+    z-index: 5 !important;
+    clear: both !important;
+}
+
+/* मुख्य ग्रिड को थोड़ा और नीचे धकेलें ताकि पट्टी ऊपर आज़ाद रहे */
+.main-container, .main-layout {
+    margin-top: 10px !important;
+}
+
+
+/* बाईं तरफ वाले (System/Other Users) मैसेजेस के अंदर जीमेल आईडी का रंग */
+.chat-msg.system .chat-user-id {
+    color: #444444 !important; /* गहरा ग्रे रंग जो लाइट बैकग्राउंड पर साफ़ दिखेगा */
+    opacity: 0.9 !important;
+}
+
+/* दाईं तरफ वाले (Your Own) मैसेजेस के अंदर जीमेल आईडी का रंग */
+.chat-msg.user .chat-user-id {
+    color: rgba(255, 255, 255, 0.9) !important; /* नीले बैकग्राउंड पर साफ़ दिखने के लिए सफ़ेद */
+}
+
+/* 🌙 डार्क मोड अनुकूलता (Dark Mode Compatibility) */
+body.dark-mode .chat-msg.system .chat-user-id {
+    color: #cccccc !important; /* डार्क मोड चालू होने पर बाईं तरफ की आईडी हल्की सफ़ेद हो जाएगी */
+}
